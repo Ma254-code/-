@@ -2,283 +2,200 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ma – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ma – Interaktive Skills</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
-
-  <!-- AOS CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
 
   <style>
     :root {
       --primary: #00bfff;
       --bg: #121212;
-      --text: #f1f1f1;
+      --text: #fff;
+      --card-bg: #1f1f1f;
+      --card-hover: #333;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
     body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Roboto', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-    }
-
-    /* Preloader */
-    #preloader {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: var(--bg);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      z-index: 9999;
-    }
-    .loader {
-      border: 8px solid #1f1f1f;
-      border-top: 8px solid var(--primary);
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-
-    header {
-      background: #1f1f1f;
-      padding: 20px 0;
-      text-align: center;
-      position: relative;
-    }
-    header h1 {
-      font-size: 2.2em;
-      color: var(--primary);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .logo {
-      font-weight: bold;
-      font-size: 1.4em;
-      margin-right: 10px;
-    }
-
-    /* Typing effect */
-    .typing {
-      border-right: 2px solid var(--primary);
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 3s steps(30,end) forwards, blink 0.8s infinite;
-      margin-top: 10px;
-      font-size: 1.1em;
-      color: var(--text);
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 300px; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    nav {
-      background: #222;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: var(--text);
-      padding: 15px 20px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    nav a:hover {
-      background: #333;
-    }
-
-    .toggle-mode {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      cursor: pointer;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: auto;
+      line-height: 1.6;
       padding: 40px 20px;
-    }
-    section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: var(--primary);
-    }
-
-    .skills {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .skill {
-      background: #1f1f1f;
-      margin: 10px;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      flex: 1 1 200px;
-      text-align: center;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .skill:hover {
-      transform: scale(1.05);
-      background: #333;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
-    .contact {
-      background: #1f1f1f;
-      padding: 30px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-    .contact p {
-      margin-bottom: 10px;
-    }
-    .contact span {
-      display: inline-block;
-      margin-top: 10px;
+    h1 {
       color: var(--primary);
-      font-weight: bold;
+      margin-bottom: 50px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: 1.5px;
     }
 
-    footer {
+    .skills-container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    /* Skill Cards */
+    .skill-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      padding: 20px 25px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .skill-card:hover {
+      background: var(--card-hover);
+    }
+
+    .skill-card h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .skill-icon {
+      margin-left: 10px;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    /* Explanation Panel */
+    .explanation {
+      max-height: 0;
+      overflow: hidden;
       background: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 40px;
+      border-radius: 0 0 10px 10px;
+      padding: 0 25px;
+      color: var(--text);
+      transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.4s ease;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0;
+      margin-bottom: 20px;
+    }
+    .explanation.open {
+      padding: 20px 25px;
+      max-height: 500px; /* Platz für längeren Text */
+      opacity: 1;
+    }
+
+    /* Pfeil Icon Rotation */
+    .skill-card.open .skill-icon {
+      transform: rotate(90deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 10px;
+      }
+      .skill-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .skill-icon {
+        margin-left: 0;
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="loader"></div>
+  <h1>Meine Fähigkeiten</h1>
+
+  <div class="skills-container">
+
+    <div class="skill-card" tabindex="0">
+      <h3>Java</h3>
+      <i data-feather="chevron-right" class="skill-icon"></i>
+    </div>
+    <div class="explanation">
+      <p>Java ist eine leistungsstarke, objektorientierte Programmiersprache, die seit Jahrzehnten in der Softwareentwicklung eingesetzt wird. Sie eignet sich besonders für die Entwicklung von plattformunabhängigen Anwendungen, da der Java-Bytecode auf vielen Systemen lauffähig ist.</p>
+      <p>Ich nutze Java, um komplexe Algorithmen zu implementieren, objektorientierte Prinzipien anzuwenden und robuste Anwendungen zu bauen, die stabil und wartbar sind.</p>
+    </div>
+
+    <div class="skill-card" tabindex="0">
+      <h3>JavaScript</h3>
+      <i data-feather="chevron-right" class="skill-icon"></i>
+    </div>
+    <div class="explanation">
+      <p>JavaScript ist die Sprache des Webs und ermöglicht es, Webseiten interaktiv und dynamisch zu gestalten. Neben der Manipulation des Document Object Model (DOM) kann man mit JavaScript auch komplexe Anwendungen und Single-Page-Apps (SPAs) erstellen.</p>
+      <p>Ich arbeite mit JavaScript, um Benutzererfahrungen zu verbessern, Animationen zu erstellen und Logik clientseitig auszuführen.</p>
+    </div>
+
+    <div class="skill-card" tabindex="0">
+      <h3>HTML</h3>
+      <i data-feather="chevron-right" class="skill-icon"></i>
+    </div>
+    <div class="explanation">
+      <p>HTML ist das Grundgerüst jeder Webseite. Mit seinen semantischen Elementen strukturiere ich Inhalte sinnvoll und zugänglich, was auch für Suchmaschinenoptimierung (SEO) und Barrierefreiheit wichtig ist.</p>
+      <p>Ich lege Wert auf sauberen und validen HTML-Code, um eine solide Basis für Styling und Skripte zu schaffen.</p>
+    </div>
+
+    <div class="skill-card" tabindex="0">
+      <h3>CSS</h3>
+      <i data-feather="chevron-right" class="skill-icon"></i>
+    </div>
+    <div class="explanation">
+      <p>Mit CSS gestalte ich das Aussehen und Layout von Webseiten. Dabei nutze ich moderne Techniken wie Flexbox, Grid und Animationen, um responsive und ansprechende Designs zu realisieren.</p>
+      <p>Ich experimentiere auch gern mit Farbthemen und Effekten, um das Nutzererlebnis zu optimieren.</p>
+    </div>
+
+    <div class="skill-card" tabindex="0">
+      <h3>Python</h3>
+      <i data-feather="chevron-right" class="skill-icon"></i>
+    </div>
+    <div class="explanation">
+      <p>Python ist eine vielseitige Sprache, die ich für Skripting, Automatisierung und Datenanalyse einsetze. Die einfache Syntax ermöglicht schnellen Einstieg und schnelle Entwicklung.</p>
+      <p>Ich nutze Python auch für kleinere Backend-Projekte und zum Experimentieren mit Machine Learning.</p>
+    </div>
+
   </div>
 
-  <header data-aos="fade-down">
-    <h1>
-      <span class="logo">Ma</span> Portfolio
-    </h1>
-    <div class="typing">Ich bin ein Webentwickler & Coder</div>
-    <!-- Dark/Light Mode Toggle -->
-    <div class="toggle-mode" onclick="toggleMode()">
-      <i data-feather="moon"></i>
-    </div>
-  </header>
-
-  <nav>
-    <a href="#about">Über mich</a>
-    <a href="#skills">Fähigkeiten</a>
-    <a href="#contact">Kontakt</a>
-  </nav>
-
-  <section id="about" data-aos="fade-right">
-    <h2>Über mich</h2>
-    <p>Hey, ich bin Ma. Ich beschäftige mich leidenschaftlich mit Programmierung und erweitere ständig mein Wissen in verschiedenen Bereichen der Softwareentwicklung.</p>
-  </section>
-
-  <section id="skills" data-aos="fade-left">
-    <h2>Meine Fähigkeiten</h2>
-    <div class="skills">
-      <div class="skill" data-aos="zoom-in">
-        <h3>Java</h3>
-        <p>Programmierung und objektorientierte Konzepte</p>
-      </div>
-      <div class="skill" data-aos="zoom-in">
-        <h3>JavaScript</h3>
-        <p>Dynamische Webentwicklung und DOM-Manipulation</p>
-      </div>
-      <div class="skill" data-aos="zoom-in">
-        <h3>HTML</h3>
-        <p>Strukturierung von Webseiten-Inhalten</p>
-      </div>
-      <div class="skill" data-aos="zoom-in">
-        <h3>CSS</h3>
-        <p>Modernes responsives Webdesign</p>
-      </div>
-      <div class="skill" data-aos="zoom-in">
-        <h3>Python</h3>
-        <p>Datenverarbeitung und Automatisierung</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" data-aos="fade-up">
-    <h2>Kontakt</h2>
-    <div class="contact">
-      <p>Du kannst mich bei Discord erreichen:</p>
-      <span>Ma254254</span>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Ma</p>
-  </footer>
-
-  <!-- AOS JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-
-    // Preloader
-    window.addEventListener('load', () => {
-      document.getElementById('preloader').style.display = 'none';
-    });
-
-    // Feather Icons
     feather.replace();
 
-    // Dark/Light Mode Toggle
-    function toggleMode() {
-      if (document.body.style.background === 'white') {
-        document.body.style.background = '#121212';
-        document.body.style.color = '#f1f1f1';
-        document.querySelector('.toggle-mode i').setAttribute('data-feather', 'moon');
-      } else {
-        document.body.style.background = 'white';
-        document.body.style.color = '#121212';
-        document.querySelector('.toggle-mode i').setAttribute('data-feather', 'sun');
-      }
-      feather.replace();
-    }
+    const skillCards = document.querySelectorAll('.skill-card');
+    const explanations = document.querySelectorAll('.explanation');
+
+    skillCards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+
+        skillCards.forEach(c => c.classList.remove('open'));
+        explanations.forEach(e => e.classList.remove('open'));
+
+        if (!isOpen) {
+          card.classList.add('open');
+          explanations[index].classList.add('open');
+        }
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
   </script>
 
 </body>
 </html>
 
-  </script>
-
-</body>
-</html>
