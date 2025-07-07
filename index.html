@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ma – Full Stack Developer</title>
-  
+  <title>Ma – Meine Fähigkeiten</title>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  
+
   <!-- AOS CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
 
@@ -21,11 +21,11 @@
     body {
       font-family: 'Roboto', sans-serif;
       line-height: 1.6;
-      background: #f4f4f4;
-      color: #333;
+      background: #121212;
+      color: #f1f1f1;
     }
     header {
-      background: #0d6efd;
+      background: #1f1f1f;
       color: #fff;
       padding: 20px 0;
       text-align: center;
@@ -34,18 +34,19 @@
       font-size: 2.2em;
     }
     nav {
-      background: #333;
+      background: #222;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
     }
     nav a {
-      color: #fff;
+      color: #f1f1f1;
       padding: 15px 20px;
       text-decoration: none;
       transition: background 0.3s;
     }
     nav a:hover {
-      background: #0d6efd;
+      background: #333;
     }
     section {
       max-width: 1000px;
@@ -55,7 +56,7 @@
     section h2 {
       text-align: center;
       margin-bottom: 20px;
-      color: #0d6efd;
+      color: #00bfff;
     }
     .skills {
       display: flex;
@@ -63,35 +64,38 @@
       justify-content: center;
     }
     .skill {
-      background: #fff;
+      background: #1f1f1f;
       margin: 10px;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
       flex: 1 1 200px;
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
     .skill:hover {
       transform: scale(1.05);
+      background: #333;
     }
     .contact {
-      background: #fff;
+      background: #1f1f1f;
       padding: 30px;
       border-radius: 8px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
-    .contact a {
+    .contact p {
+      margin-bottom: 10px;
+    }
+    .contact span {
       display: inline-block;
       margin-top: 10px;
-      color: #0d6efd;
-      text-decoration: none;
+      color: #00bfff;
       font-weight: bold;
     }
     footer {
-      background: #333;
-      color: #fff;
+      background: #222;
+      color: #aaa;
       text-align: center;
       padding: 15px 0;
       margin-top: 40px;
@@ -102,8 +106,8 @@
 <body>
 
   <header data-aos="fade-down">
-    <h1>Ma – Full Stack Developer</h1>
-    <p>Professionelle Web- und Softwareentwicklung</p>
+    <h1>Ma</h1>
+    <p>Willkommen auf meiner Webseite</p>
   </header>
 
   <nav>
@@ -114,7 +118,7 @@
 
   <section id="about" data-aos="fade-right">
     <h2>Über mich</h2>
-    <p>Hallo, ich bin Ma, ein leidenschaftlicher Full Stack Developer. Ich liebe es, moderne, performante und benutzerfreundliche Anwendungen zu entwickeln. Mein Fokus liegt auf sauberem Code, klarer Struktur und kreativen Lösungen für komplexe Probleme.</p>
+    <p>Hey, ich bin Ma. Ich beschäftige mich leidenschaftlich mit Programmierung und erweitere ständig mein Wissen in verschiedenen Bereichen der Softwareentwicklung.</p>
   </section>
 
   <section id="skills" data-aos="fade-left">
@@ -122,27 +126,23 @@
     <div class="skills">
       <div class="skill" data-aos="zoom-in">
         <h3>Java</h3>
-        <p>Objektorientierte Softwareentwicklung und Backend-Lösungen</p>
+        <p>Programmierung und objektorientierte Konzepte</p>
       </div>
       <div class="skill" data-aos="zoom-in">
         <h3>JavaScript</h3>
-        <p>Dynamische Webentwicklung, DOM Manipulation und Frameworks</p>
+        <p>Dynamische Webentwicklung und DOM-Manipulation</p>
       </div>
       <div class="skill" data-aos="zoom-in">
-        <h3>HTML & CSS</h3>
-        <p>Strukturierte, responsive und moderne Webseiten</p>
+        <h3>HTML</h3>
+        <p>Strukturierung von Webseiten-Inhalten</p>
+      </div>
+      <div class="skill" data-aos="zoom-in">
+        <h3>CSS</h3>
+        <p>Modernes responsives Webdesign</p>
       </div>
       <div class="skill" data-aos="zoom-in">
         <h3>Python</h3>
-        <p>Datenverarbeitung, Automatisierung und Backend-Entwicklung</p>
-      </div>
-      <div class="skill" data-aos="zoom-in">
-        <h3>Teamarbeit & Kommunikation</h3>
-        <p>Effektive Zusammenarbeit mit Designern, Entwicklern und Kunden</p>
-      </div>
-      <div class="skill" data-aos="zoom-in">
-        <h3>Problem Solving</h3>
-        <p>Kreative und effiziente Lösungsfindung für komplexe Anforderungen</p>
+        <p>Datenverarbeitung und Automatisierung</p>
       </div>
     </div>
   </section>
@@ -150,13 +150,13 @@
   <section id="contact" data-aos="fade-up">
     <h2>Kontakt</h2>
     <div class="contact">
-      <p>Du möchtest mit mir zusammenarbeiten oder hast eine Frage?</p>
-      <a href="mailto:deinemail@example.com">Schreib mir eine E-Mail</a>
+      <p>Du kannst mich bei Discord erreichen:</p>
+      <span>Ma254254</span>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Ma – Full Stack Developer</p>
+    <p>© 2025 Ma</p>
   </footer>
 
   <!-- AOS JS -->
