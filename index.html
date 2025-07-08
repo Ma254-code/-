@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ma – Interaktive Skills</title>
+  <title>Ma – Portfolio</title>
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <style>
     :root {
@@ -17,34 +21,112 @@
       --card-hover: #333;
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { scroll-behavior: smooth; }
     body {
-      margin: 0;
+      font-family: 'Roboto', sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      padding: 40px 20px;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    #loader-logo {
+      border: 4px solid var(--primary);
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Sections */
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      color: var(--primary);
+    }
+
+    /* Hero */
+    #hero {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-      color: var(--primary);
-      margin-bottom: 50px;
+      justify-content: center;
       text-align: center;
-      font-weight: 700;
-      font-size: 2.8rem;
-      letter-spacing: 1.5px;
+      padding-top: 100px;
+    }
+    #hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    #hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
     }
 
+    /* About */
+    #about p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* Skills */
     .skills-container {
-      max-width: 900px;
-      width: 100%;
+      margin-top: 40px;
     }
-
-    /* Skill Cards */
     .skill-card {
       background: var(--card-bg);
       border-radius: 10px;
@@ -61,123 +143,170 @@
     .skill-card:hover {
       background: var(--card-hover);
     }
-
     .skill-card h3 {
       margin: 0;
       font-size: 1.5rem;
     }
-
     .skill-icon {
       margin-left: 10px;
       color: var(--primary);
       flex-shrink: 0;
       transition: transform 0.3s ease;
     }
-
-    /* Explanation Panel */
+    .skill-card.open .skill-icon {
+      transform: rotate(90deg);
+    }
     .explanation {
       max-height: 0;
       overflow: hidden;
       background: #222;
       border-radius: 0 0 10px 10px;
       padding: 0 25px;
-      color: var(--text);
+      opacity: 0;
       transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.4s ease;
       font-size: 1.1rem;
       line-height: 1.7;
-      opacity: 0;
       margin-bottom: 20px;
     }
     .explanation.open {
+      max-height: 500px;
       padding: 20px 25px;
-      max-height: 500px; /* Platz für längeren Text */
       opacity: 1;
     }
 
-    /* Pfeil Icon Rotation */
-    .skill-card.open .skill-icon {
-      transform: rotate(90deg);
+    /* Contact */
+    #contact p {
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #333;
+      margin-top: 80px;
+      font-size: 0.9rem;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
-      body {
-        padding: 20px 10px;
-      }
-      .skill-card {
+    @media (max-width: 700px) {
+      nav {
         flex-direction: column;
-        align-items: flex-start;
-      }
-      .skill-icon {
-        margin-left: 0;
-        margin-top: 10px;
+        gap: 10px;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <h1>Meine Fähigkeiten</h1>
-
-  <div class="skills-container">
-
-    <div class="skill-card" tabindex="0">
-      <h3>Java</h3>
-      <i data-feather="chevron-right" class="skill-icon"></i>
-    </div>
-    <div class="explanation">
-      <p>Java ist eine leistungsstarke, objektorientierte Programmiersprache, die seit Jahrzehnten in der Softwareentwicklung eingesetzt wird. Sie eignet sich besonders für die Entwicklung von plattformunabhängigen Anwendungen, da der Java-Bytecode auf vielen Systemen lauffähig ist.</p>
-      <p>Ich nutze Java, um komplexe Algorithmen zu implementieren, objektorientierte Prinzipien anzuwenden und robuste Anwendungen zu bauen, die stabil und wartbar sind.</p>
-    </div>
-
-    <div class="skill-card" tabindex="0">
-      <h3>JavaScript</h3>
-      <i data-feather="chevron-right" class="skill-icon"></i>
-    </div>
-    <div class="explanation">
-      <p>JavaScript ist die Sprache des Webs und ermöglicht es, Webseiten interaktiv und dynamisch zu gestalten. Neben der Manipulation des Document Object Model (DOM) kann man mit JavaScript auch komplexe Anwendungen und Single-Page-Apps (SPAs) erstellen.</p>
-      <p>Ich arbeite mit JavaScript, um Benutzererfahrungen zu verbessern, Animationen zu erstellen und Logik clientseitig auszuführen.</p>
-    </div>
-
-    <div class="skill-card" tabindex="0">
-      <h3>HTML</h3>
-      <i data-feather="chevron-right" class="skill-icon"></i>
-    </div>
-    <div class="explanation">
-      <p>HTML ist das Grundgerüst jeder Webseite. Mit seinen semantischen Elementen strukturiere ich Inhalte sinnvoll und zugänglich, was auch für Suchmaschinenoptimierung (SEO) und Barrierefreiheit wichtig ist.</p>
-      <p>Ich lege Wert auf sauberen und validen HTML-Code, um eine solide Basis für Styling und Skripte zu schaffen.</p>
-    </div>
-
-    <div class="skill-card" tabindex="0">
-      <h3>CSS</h3>
-      <i data-feather="chevron-right" class="skill-icon"></i>
-    </div>
-    <div class="explanation">
-      <p>Mit CSS gestalte ich das Aussehen und Layout von Webseiten. Dabei nutze ich moderne Techniken wie Flexbox, Grid und Animationen, um responsive und ansprechende Designs zu realisieren.</p>
-      <p>Ich experimentiere auch gern mit Farbthemen und Effekten, um das Nutzererlebnis zu optimieren.</p>
-    </div>
-
-    <div class="skill-card" tabindex="0">
-      <h3>Python</h3>
-      <i data-feather="chevron-right" class="skill-icon"></i>
-    </div>
-    <div class="explanation">
-      <p>Python ist eine vielseitige Sprache, die ich für Skripting, Automatisierung und Datenanalyse einsetze. Die einfache Syntax ermöglicht schnellen Einstieg und schnelle Entwicklung.</p>
-      <p>Ich nutze Python auch für kleinere Backend-Projekte und zum Experimentieren mit Machine Learning.</p>
-    </div>
-
+  <!-- Loader -->
+  <div id="loader">
+    <div id="loader-logo"></div>
   </div>
 
-  <script>
-    feather.replace();
+  <!-- Navbar -->
+  <nav>
+    <h1>Ma</h1>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">Über mich</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
 
+  <!-- Hero -->
+  <section id="hero" data-aos="fade-up">
+    <h1>Hi, ich bin Ma</h1>
+    <p>Ich programmiere moderne Webseiten und Anwendungen mit Fokus auf Performance, Design und Funktionalität.</p>
+  </section>
+
+  <!-- About -->
+  <section id="about" data-aos="fade-up">
+    <h2>Über mich</h2>
+    <p>Ich heiße Ma und bin leidenschaftlicher Programmierer. Seit mehreren Jahren entwickle ich Webseiten und Anwendungen mit verschiedenen Programmiersprachen. Ich liebe es, kreative Lösungen für komplexe Probleme zu finden und ständig neue Technologien zu lernen.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="skills-container">
+
+      <!-- Java -->
+      <div class="skill-card">
+        <h3>Java</h3>
+        <i data-feather="chevron-right" class="skill-icon"></i>
+      </div>
+      <div class="explanation">
+        <p>Java ist eine leistungsstarke, objektorientierte Programmiersprache. Ich nutze sie für robuste Anwendungen, Algorithmen und Backend-Logik.</p>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="skill-card">
+        <h3>JavaScript</h3>
+        <i data-feather="chevron-right" class="skill-icon"></i>
+      </div>
+      <div class="explanation">
+        <p>JavaScript macht Webseiten interaktiv und dynamisch. Ich verwende es für Animationen, Logik und Web Apps.</p>
+      </div>
+
+      <!-- HTML -->
+      <div class="skill-card">
+        <h3>HTML</h3>
+        <i data-feather="chevron-right" class="skill-icon"></i>
+      </div>
+      <div class="explanation">
+        <p>HTML ist die Basis jeder Webseite. Ich strukturiere Inhalte semantisch sauber für gute Lesbarkeit und SEO.</p>
+      </div>
+
+      <!-- CSS -->
+      <div class="skill-card">
+        <h3>CSS</h3>
+        <i data-feather="chevron-right" class="skill-icon"></i>
+      </div>
+      <div class="explanation">
+        <p>Mit CSS gestalte ich ansprechende Layouts, Animationen und responsive Designs, um das Nutzererlebnis zu optimieren.</p>
+      </div>
+
+      <!-- Python -->
+      <div class="skill-card">
+        <h3>Python</h3>
+        <i data-feather="chevron-right" class="skill-icon"></i>
+      </div>
+      <div class="explanation">
+        <p>Python nutze ich für Skripting, Automatisierung und Datenanalyse. Die klare Syntax ermöglicht effizientes Arbeiten.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Kontakt</h2>
+    <p>Erreichbar auf Discord: <strong>Ma254254</strong></p>
+  </section>
+
+  <footer>
+    © 2025 Ma – Alle Rechte vorbehalten
+  </footer>
+
+  <!-- Feather Icons -->
+  <script>feather.replace();</script>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Skills Toggle Script -->
+  <script>
     const skillCards = document.querySelectorAll('.skill-card');
     const explanations = document.querySelectorAll('.explanation');
 
     skillCards.forEach((card, index) => {
       card.addEventListener('click', () => {
         const isOpen = card.classList.contains('open');
-
         skillCards.forEach(c => c.classList.remove('open'));
         explanations.forEach(e => e.classList.remove('open'));
 
@@ -186,16 +315,13 @@
           explanations[index].classList.add('open');
         }
       });
+    });
 
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          card.click();
-        }
-      });
+    // Loader Hide
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.display = 'none';
     });
   </script>
 
 </body>
 </html>
-
