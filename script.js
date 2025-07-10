@@ -1,34 +1,35 @@
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
-  loader.style.display = "none";
+  gsap.to(loader, { opacity: 0, duration: 1, onComplete: () => loader.style.display = "none" });
 });
 
+// Burger menu
 const burger = document.getElementById("burger");
 const navLinks = document.getElementById("nav-links");
+burger.addEventListener("click", () => navLinks.classList.toggle("hidden"));
 
-burger.addEventListener("click", () => {
-  navLinks.classList.toggle("hidden");
-});
-
-// Skill Info
+// Skills Modal
 const skills = document.querySelectorAll(".skill-card");
-const skillInfo = document.getElementById("skill-info");
-const skillTitle = document.getElementById("skill-title");
-const skillDescription = document.getElementById("skill-description");
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const closeModal = document.getElementById("closeModal");
 
 const skillTexts = {
-  Java: "Java: Objektorientierte Programmiersprache, ideal für Minecraft Plugins und Serverentwicklung.",
-  JavaScript: "JavaScript: Für dynamische Webanwendungen, Frontend-Interaktivität und Node.js Backend.",
-  HTML: "HTML: Strukturierung von Webseiten-Inhalten mit modernen semantischen Elementen.",
-  CSS: "CSS: Styling und Animationen für responsive und ansprechende Designs.",
-  Python: "Python: Vielseitige Scriptsprache für Automatisierung, Bots und Backend-Projekte."
+  Java: "Java is used for building robust Minecraft plugins and large-scale applications.",
+  JavaScript: "JavaScript makes websites interactive and dynamic, both frontend and backend with Node.js.",
+  HTML: "HTML structures web pages using semantic tags for SEO and accessibility.",
+  CSS: "CSS styles websites, creating responsive and beautiful designs with animations.",
+  Python: "Python is a versatile language for automation, AI, data analysis, and web development."
 };
 
 skills.forEach(skill => {
   skill.addEventListener("click", () => {
     const s = skill.getAttribute("data-skill");
-    skillTitle.textContent = s;
-    skillDescription.textContent = skillTexts[s];
-    skillInfo.classList.remove("hidden");
+    modalTitle.textContent = s;
+    modalDescription.textContent = skillTexts[s];
+    modal.classList.remove("hidden");
+    gsap.from(".modal-content", { scale: 0.5, opacity: 0, duration: 0.5, ease: "back.out(1.7)" });
   });
 });
+closeModal.addEventListener("click", () => modal.classList.add("hidden"));
