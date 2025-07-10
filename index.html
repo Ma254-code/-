@@ -4,354 +4,74 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ma – Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- Feather Icons -->
+  <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/feather-icons"></script>
-  <!-- AOS Animation -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-  <style>
-    :root {
-      --primary: #00bfff;
-      --bg: #121212;
-      --text: #fff;
-      --card-bg: #1f1f1f;
-      --card-hover: #333;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { scroll-behavior: smooth; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    /* Loader */
-    #loader {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-    #loader-logo {
-      border: 4px solid var(--primary);
-      border-top: 4px solid transparent;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: var(--bg);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav h1 {
-      font-size: 2rem;
-      color: var(--primary);
-      font-weight: 700;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { text-shadow: 0 0 5px var(--primary); }
-      50% { text-shadow: 0 0 20px var(--primary); }
-      100% { text-shadow: 0 0 5px var(--primary); }
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    /* Sections */
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 100px 20px;
-    }
-    section h2 {
-      text-align: center;
-      margin-bottom: 50px;
-      font-size: 2.8rem;
-      color: var(--primary);
-    }
-
-    /* Hero */
-    #hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 120px;
-      padding-bottom: 120px;
-    }
-    #hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease forwards;
-    }
-    #hero p {
-      font-size: 1.5rem;
-      max-width: 600px;
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    /* FadeIn Keyframes */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* About */
-    #about p {
-      font-size: 1.3rem;
-      line-height: 1.8;
-      text-align: center;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    /* Skills */
-    .skills-container {
-      margin-top: 40px;
-    }
-    .skill-card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      margin-bottom: 15px;
-      cursor: pointer;
-      padding: 20px 25px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.5);
-      transition: background-color 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      user-select: none;
-    }
-    .skill-card:hover {
-      background: var(--card-hover);
-    }
-    .skill-card h3 {
-      margin: 0;
-      font-size: 1.7rem;
-    }
-    .skill-icon {
-      margin-left: 10px;
-      color: var(--primary);
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-    .skill-card.open .skill-icon {
-      transform: rotate(90deg);
-    }
-    .explanation {
-      max-height: 0;
-      overflow: hidden;
-      background: #222;
-      border-radius: 0 0 10px 10px;
-      padding: 0 25px;
-      opacity: 0;
-      transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.4s ease;
-      font-size: 1.2rem;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .explanation.open {
-      max-height: 500px;
-      padding: 20px 25px;
-      opacity: 1;
-    }
-
-    /* Contact */
-    #contact p {
-      font-size: 1.5rem;
-      text-align: center;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid #333;
-      margin-top: 80px;
-      font-size: 1rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 700px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-      #hero h1 {
-        font-size: 2.5rem;
-      }
-      #hero p {
-        font-size: 1.2rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
-
   <!-- Loader -->
   <div id="loader">
-    <div id="loader-logo"></div>
+    <div class="spinner"></div>
+    <p>Lade Ma's Portfolio...</p>
   </div>
 
   <!-- Navbar -->
   <nav>
     <h1>Ma</h1>
-    <ul>
-      <li><a href="#hero">Home</a></li>
+    <div class="burger" id="burger">
+      <i data-feather="menu"></i>
+    </div>
+    <ul id="nav-links" class="hidden">
       <li><a href="#about">Über mich</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#minecraft">Minecraft</a></li>
       <li><a href="#contact">Kontakt</a></li>
     </ul>
   </nav>
 
   <!-- Hero -->
-  <section id="hero">
-    <h1 data-aos="fade-down">Hi, ich bin Ma</h1>
-    <p data-aos="fade-up">Ich programmiere moderne Webseiten und Anwendungen mit Fokus auf Performance, Design und Funktionalität.</p>
-  </section>
+  <header class="hero fade-in">
+    <h2>Willkommen</h2>
+    <p>Ich bin Ma, Entwickler und Minecraft Creator</p>
+  </header>
 
   <!-- About -->
-  <section id="about" data-aos="fade-up">
+  <section id="about" class="fade-in">
     <h2>Über mich</h2>
-    <p>Ich heiße Ma und bin leidenschaftlicher Programmierer. Seit mehreren Jahren entwickle ich Webseiten und Anwendungen mit verschiedenen Programmiersprachen. Ich liebe es, kreative Lösungen für komplexe Probleme zu finden und ständig neue Technologien zu lernen.</p>
+    <p>Ich programmiere Java, JavaScript, HTML, CSS und Python. Außerdem liebe ich Minecraft Serverentwicklung und Plugins.</p>
   </section>
 
   <!-- Skills -->
-  <section id="skills" data-aos="fade-up">
-    <h2>Skills</h2>
-    <div class="skills-container">
-
-      <!-- Skill Cards -->
-      <!-- Beispiel für Java -->
-      <div class="skill-card">
-        <h3>Java</h3>
-        <i data-feather="chevron-right" class="skill-icon"></i>
-      </div>
-      <div class="explanation">
-        <p>Java ist eine leistungsstarke, objektorientierte Programmiersprache. Ich nutze sie für robuste Anwendungen, Algorithmen und Backend-Logik.</p>
-      </div>
-
-      <!-- Wiederhole für alle Skills wie JavaScript, HTML, CSS, Python -->
-      <!-- JavaScript -->
-      <div class="skill-card">
-        <h3>JavaScript</h3>
-        <i data-feather="chevron-right" class="skill-icon"></i>
-      </div>
-      <div class="explanation">
-        <p>JavaScript macht Webseiten interaktiv und dynamisch. Ich verwende es für Animationen, Logik und Web Apps.</p>
-      </div>
-
-      <!-- HTML -->
-      <div class="skill-card">
-        <h3>HTML</h3>
-        <i data-feather="chevron-right" class="skill-icon"></i>
-      </div>
-      <div class="explanation">
-        <p>HTML ist die Basis jeder Webseite. Ich strukturiere Inhalte semantisch sauber für gute Lesbarkeit und SEO.</p>
-      </div>
-
-      <!-- CSS -->
-      <div class="skill-card">
-        <h3>CSS</h3>
-        <i data-feather="chevron-right" class="skill-icon"></i>
-      </div>
-      <div class="explanation">
-        <p>Mit CSS gestalte ich ansprechende Layouts, Animationen und responsive Designs, um das Nutzererlebnis zu optimieren.</p>
-      </div>
-
-      <!-- Python -->
-      <div class="skill-card">
-        <h3>Python</h3>
-        <i data-feather="chevron-right" class="skill-icon"></i>
-      </div>
-      <div class="explanation">
-        <p>Python nutze ich für Skripting, Automatisierung und Datenanalyse. Die klare Syntax ermöglicht effizientes Arbeiten.</p>
-      </div>
-
+  <section id="skills" class="fade-in">
+    <h2>Meine Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card" data-skill="Java"><i data-feather="code"></i> Java</div>
+      <div class="skill-card" data-skill="JavaScript"><i data-feather="code"></i> JavaScript</div>
+      <div class="skill-card" data-skill="HTML"><i data-feather="code"></i> HTML</div>
+      <div class="skill-card" data-skill="CSS"><i data-feather="code"></i> CSS</div>
+      <div class="skill-card" data-skill="Python"><i data-feather="code"></i> Python</div>
+    </div>
+    <div id="skill-info" class="skill-info hidden">
+      <h3 id="skill-title"></h3>
+      <p id="skill-description"></p>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" data-aos="fade-up">
-    <h2>Kontakt</h2>
-    <p>Erreichbar auf Discord: <strong>Ma254254</strong></p>
+  <!-- Minecraft -->
+  <section id="minecraft" class="fade-in">
+    <h2>Minecraft</h2>
+    <p>Mein Minecraft Name: <strong>Ma254</strong></p>
+    <img src="images/minecraft-skin.png" alt="Mein Minecraft Skin" class="minecraft-skin slide-in" />
   </section>
 
-  <footer>
-    © 2025 Ma – Alle Rechte vorbehalten
-  </footer>
+  <!-- Contact -->
+  <section id="contact" class="fade-in">
+    <h2>Kontakt</h2>
+    <p>Erreiche mich auf Discord:</p>
+    <p><strong>Ma254254</strong></p>
+  </section>
 
-  <!-- Feather Icons -->
+  <script src="script.js"></script>
   <script>feather.replace();</script>
-
-  <!-- AOS -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>AOS.init({ duration: 1000 });</script>
-
-  <!-- Skills Toggle Script -->
-  <script>
-    const skillCards = document.querySelectorAll('.skill-card');
-    const explanations = document.querySelectorAll('.explanation');
-
-    skillCards.forEach((card, index) => {
-      card.addEventListener('click', () => {
-        const isOpen = card.classList.contains('open');
-        skillCards.forEach(c => c.classList.remove('open'));
-        explanations.forEach(e => e.classList.remove('open'));
-
-        if (!isOpen) {
-          card.classList.add('open');
-          explanations[index].classList.add('open');
-        }
-      });
-    });
-
-    // Loader Hide
-    window.addEventListener('load', () => {
-      document.getElementById('loader').style.opacity = '0';
-      setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 500);
-    });
-  </script>
-
 </body>
 </html>
