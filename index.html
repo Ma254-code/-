@@ -1,49 +1,174 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ma – Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://unpkg.com/feather-icons"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Über Mich & Fähigkeiten</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      user-select: none;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 1s ease-out forwards;
+    }
+  </style>
 </head>
 
-<body>
-  <!-- Ladeanimation -->
-  <div id="loader">
-    <div class="loader-content">
-      <div class="spinner"></div>
-      <p>Portfolio von Ma wird geladen...</p>
-    </div>
-  </div>
+<body class="select-none bg-gradient-to-br from-purple-700 to-indigo-800 text-white min-h-screen font-sans">
 
-  <!-- Navigation -->
-  <nav>
-    <h1>Ma</h1>
-    <div class="burger" id="burger"><i data-feather="menu"></i></div>
-    <ul id="nav-links" class="hidden">
-      <li><a href="about.html">Über mich</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="minecraft.html">Minecraft</a></li>
-      <li><a href="contact.html">Kontakt</a></li>
-    </ul>
+  <!-- Rechtsklick deaktivieren -->
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-purple-900 bg-opacity-90 backdrop-blur-md shadow-md z-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="text-2xl font-bold tracking-wide slide-in-left">
+          <a href="#">Ma254</a>
+        </div>
+        <div class="hidden md:flex space-x-8 text-lg">
+          <a href="#home" class="hover:text-purple-300 transition">Home</a>
+          <a href="#about" class="hover:text-purple-300 transition">Über mich</a>
+          <a href="#skills" class="hover:text-purple-300 transition">Fähigkeiten</a>
+          <a href="#projects" class="hover:text-purple-300 transition">Projekte</a>
+          <a href="#timeline" class="hover:text-purple-300 transition">Timeline</a>
+          <a href="#contact" class="hover:text-purple-300 transition">Kontakt</a>
+        </div>
+      </div>
+    </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero">
-    <h2>Hey, ich bin Ma</h2>
-    <p id="typewriter"></p>
-  </header>
-
-  <!-- Minecraft -->
-  <section id="minecraft" class="section">
-    <h2>Minecraft</h2>
-    <p>Mein Minecraft Name: <strong>Ma254</strong></p>
-    <img src="images/minecraft-skin.png" alt="Minecraft Skin" class="minecraft-skin" />
+  <!-- Hero Section -->
+  <section id="home" class="pt-32 pb-20 text-center">
+    <h1 class="text-6xl font-bold mb-4 animate-pulse">Hey, ich bin Ma254</h1>
+    <p class="text-xl max-w-2xl mx-auto">Willkommen auf meiner persönlichen Website. Hier findest du alles über meine Arbeit, Projekte und Hobbys.</p>
   </section>
 
-  <script src="script.js"></script>
-  <script>feather.replace();</script>
+  <!-- Über Mich Section -->
+  <section id="about" class="py-20 text-center">
+    <h2 class="text-4xl font-semibold mb-6">Über mich</h2>
+    <p class="max-w-xl mx-auto mb-4">Ich bin Webentwickler und Designer mit einer Leidenschaft für minimalistische Designs und funktionale Webapps. Mein Ziel ist es, digitale Projekte zu gestalten, die Menschen inspirieren.</p>
+    <p class="max-w-xl mx-auto">Außerdem spiele ich in meiner Freizeit gerne Minecraft und entwickle eigene Minecraft Plugins, um Server mit besonderen Features und Funktionen zu erweitern.</p>
+  </section>
+
+  <!-- Fähigkeiten Section -->
+  <section id="skills" class="py-20 text-center">
+    <h2 class="text-4xl font-semibold mb-12">Meine Fähigkeiten</h2>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 px-4">
+      <div class="relative group bg-purple-900 bg-opacity-40 rounded-2xl p-6 hover:bg-purple-800 transition">
+        <h3 class="text-2xl font-bold mb-2">Java</h3>
+        <p class="opacity-0 group-hover:opacity-100 transition duration-500">Objektorientierte Sprache für Apps, Backends und Minecraft Plugins.</p>
+      </div>
+      <div class="relative group bg-purple-900 bg-opacity-40 rounded-2xl p-6 hover:bg-purple-800 transition">
+        <h3 class="text-2xl font-bold mb-2">HTML</h3>
+        <p class="opacity-0 group-hover:opacity-100 transition duration-500">Strukturiert Webseiten-Inhalte und bildet das Grundgerüst jeder Seite.</p>
+      </div>
+      <div class="relative group bg-purple-900 bg-opacity-40 rounded-2xl p-6 hover:bg-purple-800 transition">
+        <h3 class="text-2xl font-bold mb-2">CSS</h3>
+        <p class="opacity-0 group-hover:opacity-100 transition duration-500">Styling und Layout von Webseiten, Animationen und Responsive Design.</p>
+      </div>
+      <div class="relative group bg-purple-900 bg-opacity-40 rounded-2xl p-6 hover:bg-purple-800 transition">
+        <h3 class="text-2xl font-bold mb-2">JavaScript</h3>
+        <p class="opacity-0 group-hover:opacity-100 transition duration-500">Interaktive Webseiten, dynamische Inhalte und Web-Apps.</p>
+      </div>
+      <div class="relative group bg-purple-900 bg-opacity-40 rounded-2xl p-6 hover:bg-purple-800 transition">
+        <h3 class="text-2xl font-bold mb-2">Python</h3>
+        <p class="opacity-0 group-hover:opacity-100 transition duration-500">Einfach zu lernen, für Data Science, Automatisierung und Webentwicklung.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projekte Section -->
+  <section id="projects" class="py-20 text-center">
+    <h2 class="text-4xl font-semibold mb-6">Projekte</h2>
+    <div class="max-w-4xl mx-auto space-y-8 px-4">
+      <div class="bg-purple-900 bg-opacity-40 rounded-2xl p-6 text-left hover:bg-purple-800 transition">
+        <h3 class="text-2xl font-bold mb-2">Custom Minecraft Plugin</h3>
+        <p>Ein eigenes Minecraft Plugin, mit dem ich neue Befehle, Funktionen und Minispiele auf einem Server erstellt habe, um das Spielerlebnis einzigartig zu gestalten. Entwickelt mit Java und der Spigot/Bukkit API.</p>
+      </div>
+      <div class="bg-purple-900 bg-opacity-40 rounded-2xl p-6 text-left hover:bg-purple-800 transition">
+        <h3 class="text-2xl font-bold mb-2">Persönliche Portfolio Website</h3>
+        <p>Diese Website, die du gerade anschaust, ist eines meiner Projekte, um mein Wissen in Webdesign und Tailwind CSS zu vertiefen und mich weiterzuentwickeln.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="py-20 max-w-5xl mx-auto px-4">
+    <h2 class="text-4xl font-semibold mb-12 text-center">Meine Entwicklung - Timeline</h2>
+    <div class="relative border-l-4 border-purple-400 ml-4">
+      <div class="mb-10 ml-6">
+        <span class="absolute -left-6 bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold">2022</span>
+        <h3 class="text-xl font-bold mb-1">Erste Programmier-Erfahrungen</h3>
+        <p>Ich habe angefangen, Java zu lernen und einfache Programme geschrieben.</p>
+      </div>
+      <div class="mb-10 ml-6">
+        <span class="absolute -left-6 bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold">2023</span>
+        <h3 class="text-xl font-bold mb-1">Minecraft Plugin Entwicklung</h3>
+        <p>Begonnen eigene Minecraft Plugins mit Spigot API zu programmieren.</p>
+      </div>
+      <div class="mb-10 ml-6">
+        <span class="absolute -left-6 bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold">2024</span>
+        <h3 class="text-xl font-bold mb-1">Webentwicklung mit HTML, CSS & JavaScript</h3>
+        <p>Erste eigene Webseiten erstellt und meine Fähigkeiten stetig erweitert.</p>
+      </div>
+      <div class="mb-10 ml-6">
+        <span class="absolute -left-6 bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold">2025</span>
+        <h3 class="text-xl font-bold mb-1">Fortgeschrittene Projekte & Portfolio</h3>
+        <p>Portfolio Seite erstellt und an anspruchsvollen Plugins gearbeitet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt Section -->
+  <section id="contact" class="py-20 text-center">
+    <h2 class="text-4xl font-semibold mb-6">Kontakt</h2>
+    <p>Schreib mir gerne eine E-Mail an <a href="mailto:deinname@example.com" class="underline text-purple-300 hover:text-purple-500">deinname@example.com</a>.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-900 bg-opacity-90 text-center py-6 mt-20">
+    <p>Build with ❤️ by Ma254</p>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div id="cookie-consent" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-purple-900 bg-opacity-95 text-white rounded-xl px-6 py-4 shadow-lg max-w-xl flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 z-50">
+    <p class="text-center md:text-left max-w-md">
+      Diese Website verwendet Cookies, um dir das beste Erlebnis zu bieten. Mit der Nutzung stimmst du unserer <a href="#" class="underline text-purple-300">Datenschutzerklärung</a> zu.
+    </p>
+    <button id="accept-cookies" class="bg-purple-600 hover:bg-purple-700 transition rounded-lg px-4 py-2 font-semibold">Akzeptieren</button>
+  </div>
+
+  <script>
+    // Cookie Consent speichern & ausblenden
+    const consent = localStorage.getItem('cookieConsent');
+    const consentEl = document.getElementById('cookie-consent');
+    const acceptBtn = document.getElementById('accept-cookies');
+
+    if (consent === 'true') {
+      consentEl.style.display = 'none';
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'true');
+      consentEl.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
