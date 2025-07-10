@@ -1,9 +1,8 @@
 :root {
   --bg: #0f0f0f;
-  --accent: #00bfff;
-  --card-bg: rgba(255, 255, 255, 0.05);
+  --accent: #00ffe1;
   --text: #fff;
-  --modal-bg: rgba(0,0,0,0.8);
+  --card-bg: rgba(255, 255, 255, 0.05);
 }
 
 body {
@@ -11,12 +10,10 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-x: hidden;
 }
 
 h1, h2, h3, p, a {
   color: var(--text);
-  text-align: center;
 }
 
 nav {
@@ -27,6 +24,7 @@ nav {
   background: #111;
   position: sticky;
   top: 0;
+  z-index: 999;
 }
 
 nav .burger { cursor: pointer; }
@@ -35,26 +33,7 @@ nav ul.hidden { display: none; }
 
 .section {
   padding: 80px 20px;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-.skill-card {
-  background: var(--card-bg);
-  border-radius: 10px;
-  padding: 20px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
-}
-.skill-card:hover {
-  transform: translateY(-10px) scale(1.05);
-  background: var(--accent);
+  text-align: center;
 }
 
 .minecraft-skin {
@@ -84,30 +63,3 @@ nav ul.hidden { display: none; }
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-
-/* Modal */
-.modal {
-  position: fixed;
-  top:0;left:0;right:0;bottom:0;
-  background: var(--modal-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-.modal-content {
-  background: #222;
-  padding: 40px;
-  border-radius: 10px;
-  max-width: 400px;
-  text-align: center;
-}
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.hidden { display: none; }
