@@ -36,6 +36,11 @@ nav ul.hidden { display: none; }
   text-align: center;
 }
 
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
 .minecraft-skin {
   width: 150px;
   border-radius: 10px;
@@ -62,4 +67,12 @@ nav ul.hidden { display: none; }
 }
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* Typewriter Effekt */
+#typewriter {
+  font-size: 1.2em;
+  border-right: 2px solid var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
 }
