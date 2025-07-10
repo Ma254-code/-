@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  background: #121212;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, p, a {
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Loader */
+#loader {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #00bfff;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #1f1f1f;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav .burger {
+  display: none;
+  cursor: pointer;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+nav ul.hidden {
+  display: none;
+}
+@media (max-width: 768px) {
+  nav .burger {
+    display: block;
+  }
+  nav ul {
+    flex-direction: column;
+    background: #1f1f1f;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+  }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+/* Sections */
+section {
+  padding: 60px 40px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+}
+.skill-card {
+  background: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+.skill-card:hover {
+  background: #00bfff;
+  transform: scale(1.05);
+  color: #fff;
+}
+.skill-info {
+  background: #1f1f1f;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.hidden {
+  display: none;
+}
+
+/* Minecraft */
+.minecraft-skin {
+  width: 150px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+.slide-in {
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: slideIn 1s ease forwards;
+}
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
