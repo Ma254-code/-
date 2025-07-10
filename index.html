@@ -2,76 +2,97 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ma – Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
 <body>
   <!-- Loader -->
   <div id="loader">
-    <div class="spinner"></div>
-    <p>Lade Ma's Portfolio...</p>
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <p>Loading Ma's Portfolio...</p>
+    </div>
   </div>
 
   <!-- Navbar -->
   <nav>
     <h1>Ma</h1>
-    <div class="burger" id="burger">
-      <i data-feather="menu"></i>
-    </div>
+    <div class="burger" id="burger"><i data-feather="menu"></i></div>
     <ul id="nav-links" class="hidden">
-      <li><a href="#about">Über mich</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#minecraft">Minecraft</a></li>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Hero -->
-  <header class="hero fade-in">
-    <h2>Willkommen</h2>
-    <p>Ich bin Ma, Entwickler und Minecraft Creator</p>
+  <header class="hero">
+    <h2>Hello, I'm Ma</h2>
+    <p>Developer | Minecraft Creator</p>
   </header>
 
   <!-- About -->
-  <section id="about" class="fade-in">
-    <h2>Über mich</h2>
-    <p>Ich programmiere Java, JavaScript, HTML, CSS und Python. Außerdem liebe ich Minecraft Serverentwicklung und Plugins.</p>
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>I develop in Java, JavaScript, HTML, CSS, and Python. Passionate about Minecraft server and plugin development.</p>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="fade-in">
-    <h2>Meine Skills</h2>
+  <section id="skills" class="section">
+    <h2>My Skills</h2>
     <div class="skills-grid">
-      <div class="skill-card" data-skill="Java"><i data-feather="code"></i> Java</div>
-      <div class="skill-card" data-skill="JavaScript"><i data-feather="code"></i> JavaScript</div>
-      <div class="skill-card" data-skill="HTML"><i data-feather="code"></i> HTML</div>
-      <div class="skill-card" data-skill="CSS"><i data-feather="code"></i> CSS</div>
-      <div class="skill-card" data-skill="Python"><i data-feather="code"></i> Python</div>
-    </div>
-    <div id="skill-info" class="skill-info hidden">
-      <h3 id="skill-title"></h3>
-      <p id="skill-description"></p>
+      <div class="skill-card" data-skill="Java">
+        <i data-feather="code"></i>
+        <h3>Java</h3>
+      </div>
+      <div class="skill-card" data-skill="JavaScript">
+        <i data-feather="code"></i>
+        <h3>JavaScript</h3>
+      </div>
+      <div class="skill-card" data-skill="HTML">
+        <i data-feather="code"></i>
+        <h3>HTML</h3>
+      </div>
+      <div class="skill-card" data-skill="CSS">
+        <i data-feather="code"></i>
+        <h3>CSS</h3>
+      </div>
+      <div class="skill-card" data-skill="Python">
+        <i data-feather="code"></i>
+        <h3>Python</h3>
+      </div>
     </div>
   </section>
 
   <!-- Minecraft -->
-  <section id="minecraft" class="fade-in">
+  <section id="minecraft" class="section">
     <h2>Minecraft</h2>
-    <p>Mein Minecraft Name: <strong>Ma254</strong></p>
-    <img src="images/minecraft-skin.png" alt="Mein Minecraft Skin" class="minecraft-skin slide-in" />
+    <p>My Minecraft name: <strong>Ma254</strong></p>
+    <img src="images/minecraft-skin.png" alt="Minecraft Skin" class="minecraft-skin" />
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="fade-in">
-    <h2>Kontakt</h2>
-    <p>Erreiche mich auf Discord:</p>
-    <p><strong>Ma254254</strong></p>
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Discord: <strong>Ma254254</strong></p>
   </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
   <script>feather.replace();</script>
 </body>
 </html>
+
